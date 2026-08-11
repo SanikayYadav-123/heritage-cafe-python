@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Contact | Heritage Café{% endblock %}
+{% block content %}
+<section class="page-hero"><p class="eyebrow">COME SAY HELLO</p><h1>Find your way<br><em>to Heritage.</em></h1></section>
+<section class="contact section">
+<div class="contact-info"><p class="menu-label">VISIT</p><h2>24 Heritage Lane</h2><p>Shivajinagar, Pune<br>Maharashtra, India</p><p class="menu-label">HOURS</p><p>Monday – Sunday<br>8:00 AM – 10:00 PM</p><p class="menu-label">CALL</p><p>+91 90000 00000</p></div>
+<form method="POST" class="contact-form">
+<label for="name">Your name</label><input id="name" name="name" type="text" placeholder="Your name" required>
+<label for="email">Email address</label><input id="email" name="email" type="email" placeholder="you@example.com" required>
+<label for="message">Message</label><textarea id="message" name="message" rows="6" placeholder="Tell us something..." required></textarea>
+<button class="button button-primary" type="submit">Send Message</button>
+</form></section>
+{% endblock %}
