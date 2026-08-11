@@ -296,10 +296,7 @@ source venv/bin/activate
 
 ## 8. Install Requirements
 
-Upgrade pip:
 
-```bash
-pip install --upgrade pip
 ```
 
 Install the project dependencies:
@@ -325,39 +322,7 @@ Test the Flask application using Gunicorn:
 gunicorn --bind 127.0.0.1:5000 app:app
 ```
 
-Explanation:
 
-```text
-gunicorn
-    ↓
---bind 127.0.0.1:5000
-    ↓
-app:app
-```
-
-The first `app` represents:
-
-```text
-app.py
-```
-
-The second `app` represents:
-
-```python
-app = Flask(__name__)
-```
-
-The application is now available internally at:
-
-```text
-127.0.0.1:5000
-```
-
-You can test it from the EC2 server:
-
-```bash
-curl http://127.0.0.1:5000
-```
 
 ---
 
@@ -368,7 +333,7 @@ Instead of accessing the website using the EC2 public IP, a subdomain is used.
 For example:
 
 ```text
-python.yourdomain.com
+python.cloudcraze.club
 ```
 
 Go to your domain provider's DNS management section.
@@ -382,13 +347,13 @@ For example:
 ```text
 Type: CNAME
 Name: python
-Value: yourdomain.com
+Value: cloudcraze.club
 ```
 
 This creates:
 
 ```text
-python.yourdomain.com
+python.cloudcraze.club
 ```
 
 > If your DNS provider requires the subdomain to point directly to the EC2 public IP, use an **A record** instead. CNAME records point to another hostname, not directly to an IP address.
@@ -425,7 +390,7 @@ server {
 Replace:
 
 ```text
-python.yourdomain.com
+python.cloudcraze.club
 ```
 
 with your actual Python subdomain.
@@ -438,24 +403,8 @@ server_name python.cloudcraze.club;
 
 ---
 
-## 12. Test Nginx Configuration
 
-Before reloading Nginx, always test the configuration:
-
-```bash
-sudo nginx -t
-```
-
-Expected result:
-
-```text
-syntax is ok
-test is successful
-```
-
----
-
-## 13. Reload Nginx
+## 12. Reload Nginx
 
 After the configuration test succeeds:
 
@@ -463,83 +412,16 @@ After the configuration test succeeds:
 sudo systemctl reload nginx
 ```
 
-Now the request flow becomes:
 
-```text
-User
-  ↓
-python.yourdomain.com
-  ↓
-Nginx :80
-  ↓
-127.0.0.1:5000
-  ↓
-Gunicorn
-  ↓
-Flask
-  ↓
-Cafe Heritage
-```
 
 Open the subdomain in a browser:
 
 ```text
-http://python.yourdomain.com
+http://python.cloudcraze.club
 ```
 
 ---
 
-## 🔧 Useful Commands
-
-### Check Nginx
-
-```bash
-sudo systemctl status nginx
-```
-
-### Test Nginx configuration
-
-```bash
-sudo nginx -t
-```
-
-### Reload Nginx
-
-```bash
-sudo systemctl reload nginx
-```
-
-### Check listening ports
-
-```bash
-sudo ss -tulpn
-```
-
-### Test Flask/Gunicorn locally
-
-```bash
-curl http://127.0.0.1:5000
-```
-
-### Check Git
-
-```bash
-git --version
-```
-
-### Check Python
-
-```bash
-python3 --version
-```
-
-### Check Gunicorn
-
-```bash
-gunicorn --version
-```
-
----
 
 ## 📁 Final Project Structure
 
@@ -568,3 +450,5 @@ cafe-heritage/
 
 ---
 
+# Output
+![](SS.png)
